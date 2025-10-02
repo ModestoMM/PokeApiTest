@@ -1,6 +1,5 @@
 package com.example.pokeapitest.repository
 
-import com.example.pokeapitest.data.database.Pokemon.PokemonDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

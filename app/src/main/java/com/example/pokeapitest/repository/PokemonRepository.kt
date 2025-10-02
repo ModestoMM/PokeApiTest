@@ -11,13 +11,13 @@ import com.example.pokeapitest.utils.PokemonRemoteMediator
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+//Se encarga de realizar las operaciones tanto para la red como parala base de datos room.
 class PokemonRepository @Inject constructor(
     private val apiService: PokemonApiService,
     private val pokemonDao: PokemonDao,
     private val pokemonDatabase: PokemonDatabase
 ) {
 
-    // Proporciona el Flow de la base de datos. La UI SIEMPRE lee de aquí.
     @OptIn(ExperimentalPagingApi::class)
     fun getPokemonList(): Flow<PagingData<PokemonEntity>> {
         return Pager(

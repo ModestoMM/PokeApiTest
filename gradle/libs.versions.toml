@@ -1,6 +1,7 @@
 [versions]
 agp = "8.12.3"
 coilCompose = "2.6.0"
+compose = "1.0.0-alpha.1"
 converterGson = "2.9.0"
 converterScalars = "2.9.0"
 hiltAndroid = "2.51.1"
@@ -18,9 +19,11 @@ composeBom = "2024.09.00"
 lifecycleViewmodelCompose = "2.8.2"
 pagingCompose = "3.3.0"
 pagingRuntimeKtx = "3.3.0"
+playServicesLocation = "21.0.1"
 retrofit = "2.9.0"
 roomCompiler = "2.6.1"
 roomKtx = "2.6.1"
+roomPaging = "2.6.1"
 roomRuntime = "2.6.1"
 foundation = "1.9.2"
 
@@ -32,6 +35,7 @@ androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", v
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+compose = { module = "com.github.bumptech.glide:compose", version.ref = "compose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
@@ -50,9 +54,11 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 retrofit2-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
+room-paging = { module = "androidx.room:room-paging", version.ref = "roomPaging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

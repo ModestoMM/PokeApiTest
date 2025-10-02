@@ -87,7 +87,6 @@ class PokemonViewModel @Inject constructor(
         viewModelScope.launch {
             val pokemon = repository.getRandomPokemon()
             _randomPokemon.value = pokemon
-            // Disparar el evento de vibración
             _vibrateChannel.send(Unit)
         }
     }
@@ -108,11 +107,9 @@ class PokemonViewModel @Inject constructor(
                         accumulatedDistance += distance
                         lastLocation = newLocation
                     }
-                    Log.d("RandomPokemonVM", "Distancia acumulada: $accumulatedDistance metros.")
-
                     if (accumulatedDistance >= 10) {
                         _showAlert.value = true
-                        accumulatedDistance = 0f // <-- Reiniciar el acumulador
+                        accumulatedDistance = 0f
                     }
                 }
             }

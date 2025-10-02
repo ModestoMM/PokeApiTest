@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">PokeApiTest</string>
+    <string name="new_pokemon">¡Un nuevo Pokémon ha aparecido!</string>
+    <string name="pokemon_found">Pokémon encontrado</string>
+    <string name="pokemon_capture">Capturar</string>
+    <string name="pokemon_types">Tipos: %1$s</string>
+    <string name="pokemon_name">Nombre: %1$s</string>
+    <string name="find_random_pokemon">Encontrar Pokémon al azar</string>
+    <string name="looking_pokemon">Buscando Pokémon...</string>
+    <string name="id_pokemon">Id Pokemon: %1$d</string>
+    <string name="pokemon_height">Altura: %1$d</string>
+    <string name="pokemon_weight">Peso: %1$d</string>
+    <string name="loading">Cargando...</string>
+    <string name="toggle_favorite_description">Toggle Favorite</string>
+    <string name="error_loading_data">Ocurrió un error al cargar los datos.</string>
+    <string name="no_favorite_pokemon">No tienes Pokémon favoritos.</string>
 </resources>

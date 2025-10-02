@@ -66,11 +66,11 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.androidx.room.compiler)
-    implementation("androidx.room:room-paging:2.6.1")
+    implementation(libs.room.paging)
     //Glide
-    implementation("com.github.bumptech.glide:compose:1.0.0-alpha.1")
+    implementation(libs.compose)
     //Google Play Services Location
-    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation(libs.play.services.location)
 
 
     implementation(libs.androidx.core.ktx)

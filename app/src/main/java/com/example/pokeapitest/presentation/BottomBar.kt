@@ -33,7 +33,6 @@ fun BottomBar(navController: NavController) {
                 selected = currentRoute == item.screen.route,
                 onClick = {
                     navController.navigate(item.screen.route) {
-                        // Evita que se dupliquen las instancias del mismo destino
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
                     }

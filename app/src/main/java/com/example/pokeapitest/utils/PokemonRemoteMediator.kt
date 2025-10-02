@@ -10,8 +10,8 @@ import com.example.pokeapitest.data.database.Pokemon.PokemonDao
 import com.example.pokeapitest.data.database.Pokemon.PokemonEntity
 import com.example.pokeapitest.data.database.PokemonDatabase
 import com.example.pokeapitest.repository.PokemonApiService
-import java.io.InvalidObjectException
 
+//Se encargara de las peticiones de red para actualizar la base de datos.
 @OptIn(ExperimentalPagingApi::class)
 class PokemonRemoteMediator(
     private val apiService: PokemonApiService,
@@ -29,7 +29,7 @@ class PokemonRemoteMediator(
     ): MediatorResult {
         return try {
             val offset = when (loadType) {
-                LoadType.REFRESH -> 0 // Siempre comienza en 0 al refrescar
+                LoadType.REFRESH -> 0
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> {
                     val lastPokemon = pokemonDatabase.withTransaction {
@@ -39,24 +39,20 @@ class PokemonRemoteMediator(
                 }
             }
 
-            // Llamada a la API para obtener la lista paginada de Pokémon
             val response = apiService.getListPokemon(
                 limit = state.config.pageSize,
                 offset = offset
             )
 
-            // Obtener los detalles de cada Pokémon y procesarlos
             val pokemonDetails = response.results.map { pokemon ->
                 apiService.getPokemonDetails(pokemon.name)
             }
 
-            // Transacción de Room para garantizar la atomicidad de las operaciones
             pokemonDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    pokemonDao.clearAll() // Limpiar la tabla solo al refrescar
+                    pokemonDao.clearAll()
                 }
 
-                // Convertir los detalles de la API en entidades y persistirlos
                 pokemonDetails.forEach { details ->
                     val types = details.types.joinToString(",") { it.type.name }
                     val entity = PokemonEntity(
@@ -74,9 +70,7 @@ class PokemonRemoteMediator(
 
             MediatorResult.Success(endOfPaginationReached = pokemonDetails.isEmpty())
         } catch (e: Exception) {
-            // Loguear el error para diagnosticar
-            Log.e("RemoteMediator", "Error al cargar datos: ${e.message}", e)
             MediatorResult.Error(e)
-        } as MediatorResult
+        }
     }
 }
