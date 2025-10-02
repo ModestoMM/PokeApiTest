@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+//Se encarga de tener separado en un modulo a los repositorios.
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
@@ -18,12 +19,10 @@ object RepositoryModule {
         pokemonDao: PokemonDao,
         pokemonDatabase: PokemonDatabase
     ): PokemonRepository {
-        return PokemonRepository(apiService, pokemonDao,pokemonDatabase) // El constructor del repo no necesita la BD
-    }
-
-    @Singleton
-    @Provides
-    fun provideLocationUpdatesRepository(): LocationUpdatesRepository {
-        return LocationUpdatesRepository()
+        return PokemonRepository(
+            apiService,
+            pokemonDao,
+            pokemonDatabase
+        )
     }
 }

@@ -11,6 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+//Construcción de la base de datos local.
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {

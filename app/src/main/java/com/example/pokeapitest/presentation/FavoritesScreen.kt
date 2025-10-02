@@ -10,7 +10,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.pokeapitest.R
 
 @Composable
 fun FavoritesScreen(
@@ -25,7 +27,7 @@ fun FavoritesScreen(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "No tienes Pokémon favoritos.")
+                Text(text = stringResource(R.string.no_favorite_pokemon))
             }
         } else {
             LazyColumn {

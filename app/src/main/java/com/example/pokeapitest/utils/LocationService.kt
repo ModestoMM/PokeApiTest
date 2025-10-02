@@ -1,7 +1,7 @@
 package com.example.pokeapitest.utils
 
 import android.annotation.SuppressLint
-import android.content.Context
+import android.app.Application
 import android.location.Location
 import android.os.Looper
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -13,14 +13,15 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
+//Llevara a cabo la actualiación de la ubicación.
 class LocationService(
-    private val context: Context,
+    application: Application,
     private val fusedLocationClient: FusedLocationProviderClient
 ) {
     @SuppressLint("MissingPermission")
     fun getLocationUpdates(): Flow<Location> = callbackFlow {
         val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 1000L)
-            .setMinUpdateDistanceMeters(10f) // <-- Corrección aquí
+            .setMinUpdateDistanceMeters(10f)
             .build()
 
         val locationCallback = object : LocationCallback() {
@@ -31,7 +32,11 @@ class LocationService(
             }
         }
 
-        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
+        fusedLocationClient.requestLocationUpdates(
+            locationRequest,
+            locationCallback,
+            Looper.getMainLooper()
+        )
 
         awaitClose {
             fusedLocationClient.removeLocationUpdates(locationCallback)

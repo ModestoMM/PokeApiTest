@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="more_spacer_height">32dp</dimen>
+    <dimen name="spacer_height">16dp</dimen>
+    <dimen name="glide_size">200dp</dimen>
+</resources>
